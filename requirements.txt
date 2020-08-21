@@ -1,4 +1,6 @@
 streamlit
-black
-altair
-vega-datasets
+pandas
+matplotlib
+seaborn
+numpy
+scikit-learn
