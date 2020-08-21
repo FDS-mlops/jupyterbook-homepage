@@ -32,15 +32,14 @@ FILE_TYPES = ["csv", "txt"]
 st.set_option('deprecation.showfileUploaderEncoding', False)
 
 def main():
-    """Select Auto ML App with Streamlit"""
 
-    st.title("Semi Auto ML App")
-    # st.text("Using Streamlit == 0.62+")
+    st.title("JupyterBook Auto ML App")
+    st.text("So Simple, it makes you happier!")
 
-    activities = ["EDA", "Plot", "Model Building", "About"]
+    activities = ["About", "EDA", "Plot", "Model Building"]
 
     choice = st.sidebar.selectbox("Select Activity", activities)
-
+    
     if choice == 'EDA':
         st.subheader("Exploratory Data Analysis")
 
@@ -87,35 +86,37 @@ def main():
             df = pd.read_csv(data, encoding="utf-8")       
             st.dataframe(df.head())
 
-        all_columns_names = df.columns.tolist()
-        type_of_plot = st.selectbox("Select Type of Plot", ["area","bar","line","hist","box","kde"])
-        selected_columns_names = st.multiselect("Select Columns To Plot", all_columns_names)
+            all_columns_names = df.columns.tolist()
+            type_of_plot = st.selectbox("Select Type of Plot", ["area","bar","line","hist","box","kde"])
+            selected_columns_names = st.multiselect("Select Columns To Plot", all_columns_names)
 
-        if st.button("Generate Plot"):
-            st.success("Generating Customizable Plot of {} ofr {}".format(type_of_plot,selected_columns_names))
+            if st.button("Generate Plot"):
+                st.success("Generating Customizable Plot of {} ofr {}".format(type_of_plot,selected_columns_names))
 
-            # Plot By Streamlit
-            if type_of_plot == 'area':
-                cust_data = df[selected_columns_names]
-                st.area_chart(cust_data)
-            
-            elif type_of_plot == 'bar':
-                cust_data = df[selected_columns_names]
-                st.bar_chart(cust_data)
+                # Plot By Streamlit
+                if type_of_plot == 'area':
+                    cust_data = df[selected_columns_names]
+                    st.area_chart(cust_data)
+                
+                elif type_of_plot == 'bar':
+                    cust_data = df[selected_columns_names]
+                    st.bar_chart(cust_data)
 
-            elif type_of_plot == 'line':
-                cust_data = df[selected_columns_names]
-                st.line_chart(cust_data)
+                elif type_of_plot == 'line':
+                    cust_data = df[selected_columns_names]
+                    st.line_chart(cust_data)
 
-            # Custom Plot
-            elif type_of_plot:
-                cust_data = df[selected_columns_names]
-                st.bar_chart(cust_data)
+                # Custom Plot
+                elif type_of_plot:
+                    cust_data = df[selected_columns_names]
+                    st.bar_chart(cust_data)
 
     elif choice == 'Model Building':
         st.subheader("Building ML Model")
 
-        data = st.file_uploader("Upload Dataset", type=FILE_TYPES)    
+        data = st.file_uploader("Upload Dataset", type=FILE_TYPES)
+        st.text("Dataset Format: X = [:,0:-1], Y = [:,-1]")
+
         if data is not None:
             df = pd.read_csv(data, encoding="utf-8")       
             st.dataframe(df.head())
@@ -166,10 +167,10 @@ def main():
         st.write("Please contact us, if you want to build your own stable and scable data analytics platform powered by Kubernetes platform.")
 
         st.subheader("Online data platform service - PaaS")
-        st.write("Site :    https://hub.jupyteronline.com")
+        st.write("https://www.jupyteronline.com")
 
-        st.subheader("Contact")
-        st.write("E-mail :   jupyteronline@gmail.com")  
+        st.subheader("Q&A")
+        st.write("Email :    jupyteronline@gmail.com")  
 
 if __name__ == '__main__':
     main()
