@@ -36,7 +36,7 @@ def main():
     st.title("JupyterBook Auto ML App")
     st.text("So Simple, it makes you happier!")
 
-    activities = ["About", "EDA", "Plot", "Model Building"]
+    activities = ["EDA", "Plot", "Model Building","About"]
 
     choice = st.sidebar.selectbox("Select Activity", activities)
     
