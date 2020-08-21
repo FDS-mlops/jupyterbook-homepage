@@ -7,10 +7,13 @@ from io import StringIO
 import os
 import sys
 import streamlit as st
+from streamlit import caching
+caching.clear_cache()
 
 # EDA pkgs
 import pandas as pd
-import numpy as np
+import numpy as 
+
 
 # Viz pkgs
 import matplotlib.pyplot as plt
@@ -36,7 +39,7 @@ def main():
     st.title("JupyterBook Auto ML App")
     st.text("So Simple, it makes you happier!")
 
-    activities = ["EDA", "Plot", "Model Building","About"]
+    activities = ["EDA", "Plot", "Model Building", "About"]
 
     choice = st.sidebar.selectbox("Select Activity", activities)
     
