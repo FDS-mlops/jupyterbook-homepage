@@ -12,8 +12,7 @@ caching.clear_cache()
 
 # EDA pkgs
 import pandas as pd
-import numpy as 
-
+import numpy as np
 
 # Viz pkgs
 import matplotlib.pyplot as plt
