@@ -8,7 +8,10 @@ import os
 import sys
 import streamlit as st
 from streamlit import caching
-caching.clear_cache()
+
+# Logo
+from PIL import Image
+img = Image.open('./src/images/logo.jpg')
 
 # EDA pkgs
 import pandas as pd
@@ -33,8 +36,12 @@ FILE_TYPES = ["csv", "txt"]
 
 st.set_option('deprecation.showfileUploaderEncoding', False)
 
+PAGE_CONFIG={"page_title":"jupyterbook","page_icon":img,"layout":"centered"}
+st.beta_set_page_config(**PAGE_CONFIG)
+
 def main():
 
+    caching.clear_cache()
     st.title("JupyterBook Auto ML App")
     st.text("So Simple, it makes you happier!")
 
@@ -126,7 +133,7 @@ def main():
             # Preparation
             X = df.iloc[:,0:-1]
             Y = df.iloc[:,-1]
-            seed = 7
+            seed = None
 
             # Model - evaluate each model
             models = []
